@@ -1,0 +1,521 @@
+/* ============================================================
+   Formula Tool — Obsidian Plugin Styles
+   Layout: left main (input+preview+actions) + right library
+   Author: liqian
+   ============================================================ */
+
+/* --- Container --- */
+.ft-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ============================================================
+   Main Layout — left content + right library
+   ============================================================ */
+.ft-main-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* --- Left Panel (input + preview + actions) --- */
+.ft-left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  overflow-y: auto;
+  padding: 10px 12px;
+  gap: 10px;
+}
+
+/* --- Resizer Handle --- */
+.ft-resizer {
+  width: 6px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: transparent;
+  transition: background 0.15s;
+  position: relative;
+  z-index: 3;
+}
+.ft-resizer:hover,
+.ft-resizer.ft-resizer-active {
+  background: var(--interactive-accent);
+  opacity: 0.6;
+}
+
+/* --- Right Panel (library sidebar) --- */
+.ft-right-panel {
+  flex-shrink: 0;
+  overflow-y: auto;
+  background: var(--background-secondary);
+  border-left: 1px solid var(--background-modifier-border);
+}
+
+/* ============================================================
+   Mode Tabs
+   ============================================================ */
+.ft-mode-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 2px;
+  background: var(--background-secondary);
+  border-radius: 8px;
+}
+
+.ft-mode-tab {
+  flex: 1;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.ft-mode-tab:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+.ft-mode-tab.active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* ============================================================
+   Input Section
+   ============================================================ */
+.ft-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ft-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.ft-input-row {
+  position: relative;
+}
+
+.ft-latex-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: var(--font-monospace);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ft-latex-input:focus {
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb, 124, 92, 252), 0.2);
+}
+.ft-latex-input::placeholder {
+  color: var(--text-muted);
+  font-family: var(--font-text);
+  font-size: 13px;
+}
+
+.ft-input-hints {
+  display: flex;
+  gap: 12px;
+  padding: 2px 0 0;
+}
+.ft-hint {
+  font-size: 10px;
+  color: var(--text-faint);
+  background: var(--background-secondary);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--font-monospace);
+}
+
+/* ============================================================
+   Code Panel
+   ============================================================ */
+.ft-code-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ============================================================
+   Visual Panel (MathLive)
+   ============================================================ */
+.ft-visual-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ft-mathlive-wrapper {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+  min-height: 120px;
+  padding: 8px;
+  transition: border-color 0.2s;
+}
+.ft-mathlive-wrapper:focus-within {
+  border-color: var(--interactive-accent);
+}
+
+.ft-math-field {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  font-size: 18px;
+  outline: none;
+  padding: 8px;
+}
+
+.ft-mathlive-fallback {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+}
+
+.ft-visual-latex-output {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--background-secondary);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.ft-visual-latex-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ft-visual-latex-code {
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  color: var(--text-accent);
+  word-break: break-all;
+}
+
+/* ============================================================
+   Preview Section
+   ============================================================ */
+.ft-preview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ft-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ft-mode-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.ft-preview-box {
+  flex: 1;
+  min-height: 70px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 12px 16px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ft-preview-placeholder {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.ft-preview-error {
+  color: var(--text-error);
+  font-size: 12px;
+  font-family: var(--font-monospace);
+}
+
+/* ============================================================
+   Action Buttons
+   ============================================================ */
+.ft-actions {
+  display: flex;
+  gap: 6px;
+  padding-top: 2px;
+}
+
+.ft-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.ft-btn-inline {
+  flex: 1;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.ft-btn-inline:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.ft-btn-block {
+  flex: 1;
+  background: color-mix(in srgb, var(--interactive-accent) 75%, #fff);
+  color: var(--text-on-accent);
+}
+.ft-btn-block:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.ft-btn-clear {
+  flex: 0 0 auto;
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+  padding: 8px 14px;
+}
+.ft-btn-clear:hover {
+  background: var(--text-error);
+  color: #fff;
+}
+
+/* ============================================================
+   Right Library Panel
+   ============================================================ */
+.ft-lib-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ft-lib-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.ft-lib-header:hover {
+  background: var(--background-modifier-hover);
+}
+
+.ft-lib-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-normal);
+}
+
+.ft-lib-toggle-btn {
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--background-modifier-border);
+}
+
+/* --- Library body --- */
+.ft-lib-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.ft-lib-search-row {
+  margin-bottom: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--background-secondary);
+  padding: 4px 0;
+}
+
+.ft-lib-search-input {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ft-lib-search-input:focus {
+  border-color: var(--interactive-accent);
+}
+.ft-lib-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* --- Category blocks --- */
+.ft-lib-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ft-lib-cat-block {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.ft-lib-cat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  background: var(--background-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.ft-lib-cat-header:hover {
+  background: var(--background-modifier-hover);
+}
+
+.ft-lib-cat-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+.ft-lib-cat-toggle {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.ft-lib-cat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 6px;
+  background: var(--background-primary);
+}
+
+.ft-lib-symbol-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 26px;
+  padding: 1px 5px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 3px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 11px;
+  font-family: var(--font-monospace);
+  cursor: pointer;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.ft-lib-symbol-btn:hover {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+  transform: translateY(-1px);
+}
+
+/* --- Recent --- */
+.ft-lib-recent {
+  margin-top: 10px;
+}
+
+.ft-lib-recent-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+
+.ft-lib-recent-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.ft-lib-recent-empty {
+  color: var(--text-faint);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* ============================================================
+   Search Modal
+   ============================================================ */
+.ft-search-label {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.ft-search-latex {
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-right: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.ft-search-cat {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-left: 8px;
+}

@@ -1,0 +1,10 @@
+{
+  "id": "formula-tool",
+  "name": "Formula Tool",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "插入数学/物理公式的符号库 & 实时预览工具 — 点击即可将 LaTeX 公式插入笔记",
+  "author": "liqian",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}
